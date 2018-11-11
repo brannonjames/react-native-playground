@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
-  Button,
   Text,
   StyleSheet,
 } from 'react-native';
-
-import { PricingCard } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,25 +14,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export default (props) => {
-  const { navigation } = props;
+class Home extends Component {
+  componentDidMount() {
+    const { navigation } = this.props;
+    navigation.navigate('authScreen');
+  }
 
-  return (
-    <View style={styles.container}>
-      <Text>Home Page</Text>
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Home Page</Text>
+      </View>
+    );
+  }
+}
 
-      <PricingCard
-        color="#4f9deb"
-        title="Workout"
-        price="$28"
-        info={['YMCA', 'Weights', '30 minutes']}
-        button={{ title: 'Book', icon: 'video-call' }}
-      />
-
-      <Button
-        title="Go to info"
-        onPress={() => navigation.navigate('info')}
-      />
-    </View>
-  );
-};
+export default Home;
